@@ -7,66 +7,66 @@ const contentSecurityPolicy = {
 	objectSrc: ["'none'"], // object-src 'none';
 	childSrc: [
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
-	], // child-src 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.it repl.it;
+	], // child-src 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.it repl.it;
 	frameSrc: [
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
-	], // frame-src 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.it repl.it;
+	], // frame-src 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.it repl.it;
 	connectSrc: [
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
-	], // connect-src 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.it repl.it;
+	], // connect-src 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.it repl.it;
 	scriptSrc: [
 		"'unsafe-inline'",
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
 		'*.repl.co',
 		'https:',
-	], // script-src 'unsafe-inline' 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.co https:;
+	], // script-src 'unsafe-inline' 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.co https:;
 	workerSrc: [
 		"'unsafe-inline'",
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
 		'*.repl.co',
 		'https:',
-	], // worker-src 'unsafe-inline' 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.co https:;
+	], // worker-src 'unsafe-inline' 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.co https:;
 	styleSrc: ['*', "'unsafe-inline'"], // style-src * 'unsafe-inline';
 	frameAncestors: [
 		"'self'",
-		'*.furret.codes',
-		'furret.codes',
+		'*.furret.dev',
+		'furret.dev',
 		'*.replit.com',
 		'replit.com',
 		'*.repl.it',
 		'repl.it',
 		'*.repl.co',
-	], // frame-ancestors 'self' *.furret.codes furret.codes *.replit.com replit.com *.repl.co https:;
+	], // frame-ancestors 'self' *.furret.dev furret.dev *.replit.com replit.com *.repl.co https:;
 	baseUri: ["'self'"],
 	upgradeInsecureRequests: [], // upgrade-insecure-requests;
 };

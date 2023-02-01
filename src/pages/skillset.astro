@@ -1,0 +1,280 @@
+---
+import Home from '~icons/material-symbols/home-rounded';
+
+import Layout from '@layouts/Layout.astro';
+
+import { getUser } from '@libs/useReplAuth';
+
+const user = getUser({ client: Astro });
+
+if (import.meta.env.PROD && Astro.url.hostname !== 'www.furret.dev') {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
+
+if (
+	import.meta.env.DEV &&
+	user !== null &&
+	user.name !== 'RayhanADev' &&
+	Astro.url.hostname !== 'www.furret.dev'
+) {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
+---
+
+<Layout
+	title="Skills Set | Ray Arayilakath | Teen Fullstack Web Developer && Software Engineer."
+	ogtitle="Teen Fullstack Web Developer && Software Engineer. I build anti-abuse tooling for Replit and make kewl things with their APIs."
+	description="A teen Fullstack Web Developer and Software Engineer based in the Dallas Fort-Worth Area in Texas. With over 3 years of experience creating a variety of tools and websites for different organizations, I am a highly capable and talented developer."
+	expose={true}
+>
+	<main
+		class="bg-background-default m-auto flex h-72 max-h-72 w-full max-w-sm flex-col flex-nowrap items-start justify-start gap-4 overflow-y-auto rounded px-8 pb-8 md:h-screen md:max-h-screen md:max-w-lg"
+	>
+		<div class="bg-background-default sticky top-0 w-full pt-8 pb-2">
+			<nav
+				class="mt-4 flex w-full flex-row flex-nowrap items-center justify-between"
+			>
+				<h1 class="font-display text-4xl font-bold">My Skills</h1>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest my-auto h-10 w-10 cursor-pointer transition-all duration-200"
+				>
+					<a href="/" rel="preload"
+						><Home style={{ width: '40px', height: '40px' }} /></a
+					>
+				</span>
+			</nav>
+			<p class="text-foreground-dimmest w-full">
+				This is a list of what I have learned and used across my
+				programming career.
+			</p>
+		</div>
+		<div class="prose">
+			<h2
+				class="font-display text-foreground-default mb-0 text-2xl font-bold"
+			>
+				Languages
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">
+					Javascript
+					<ul class="text-foreground-dimmer m-0 py-0">
+						<li class="my-0 py-0">Node.js</li>
+						<li class="my-0 py-0">Deno</li>
+						<li class="my-0 py-0">Bun</li>
+					</ul>
+				</li>
+				<li class="my-0 py-0">Typescript</li>
+				<li class="my-0 py-0">JSX/TSX</li>
+				<li class="my-0 py-0">Coffeescript</li>
+				<li class="my-0 py-0">Python</li>
+				<li class="my-0 py-0">Lua</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Web Frameworks
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">React.js</li>
+				<li class="my-0 py-0">Preact.js</li>
+				<li class="my-0 py-0">Vue.js</li>
+				<li class="my-0 py-0">Solid.js</li>
+				<li class="my-0 py-0">Express.js</li>
+				<li class="my-0 py-0">Koa.js</li>
+				<li class="my-0 py-0">Fastify</li>
+				<li class="my-0 py-0">Flask</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Full Stack Frameworks
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Next.js</li>
+				<li class="my-0 py-0">Nuxt.js</li>
+				<li class="my-0 py-0">Remix.run</li>
+				<li class="my-0 py-0">Astro</li>
+				<li class="my-0 py-0">SvelteKit</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				APIs
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">REST</li>
+				<li class="my-0 py-0">GraphQL</li>
+				<li class="my-0 py-0">JSON-RPC</li>
+				<li class="my-0 py-0">tRPC</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Databases
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Supabase</li>
+				<li class="my-0 py-0">Mongodb</li>
+				<li class="my-0 py-0">Firebase</li>
+				<li class="my-0 py-0">CouchDB</li>
+				<li class="my-0 py-0">Pocketbase</li>
+				<li class="my-0 py-0">Redis</li>
+				<li class="my-0 py-0">Postgresql</li>
+				<li class="my-0 py-0">Airtable</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Mobile Frameworks
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Expo</li>
+				<li class="my-0 py-0">React Native</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Tooling
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Git</li>
+				<li class="my-0 py-0">NPM</li>
+				<li class="my-0 py-0">Yarn</li>
+				<li class="my-0 py-0">Eslint</li>
+				<li class="my-0 py-0">Prettier</li>
+				<li class="my-0 py-0">JSHint</li>
+				<li class="my-0 py-0">Babel</li>
+				<li class="my-0 py-0">Webpack</li>
+				<li class="my-0 py-0">Esbuild</li>
+				<li class="my-0 py-0">Vite</li>
+				<li class="my-0 py-0">Gulp</li>
+				<li class="my-0 py-0">pm2</li>
+				<li class="my-0 py-0">Docker</li>
+				<li class="my-0 py-0">Heroku</li>
+				<li class="my-0 py-0">Wrangler (Cloudflare)</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Testing Frameworks
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Jest</li>
+				<li class="my-0 py-0">Mocha</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Wire Formats
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Form Data</li>
+				<li class="my-0 py-0">JSON</li>
+				<li class="my-0 py-0">XML</li>
+				<li class="my-0 py-0">Google Protocol Buffers</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Markup
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">HTML</li>
+				<li class="my-0 py-0">XML</li>
+				<li class="my-0 py-0">Pug</li>
+				<li class="my-0 py-0">EJS</li>
+				<li class="my-0 py-0">Handlebars</li>
+				<li class="my-0 py-0">Nunjucks</li>
+				<li class="my-0 py-0">Markdown</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Styling
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">CSS</li>
+				<li class="my-0 py-0">LESS</li>
+				<li class="my-0 py-0">SASS/SCSS</li>
+				<li class="my-0 py-0">TailwindCSS</li>
+				<li class="my-0 py-0">Bootstrap</li>
+				<li class="my-0 py-0">Styled-JSX</li>
+				<li class="my-0 py-0">Styled Components</li>
+				<li class="my-0 py-0">emotion</li>
+				<li class="my-0 py-0">vanilla-extract</li>
+				<li class="my-0 py-0">furret.css</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Config Formats
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">JSON</li>
+				<li class="my-0 py-0">CSV</li>
+				<li class="my-0 py-0">YAML</li>
+				<li class="my-0 py-0">TOML</li>
+				<li class="my-0 py-0">CSON</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Analytics
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Google Analytics</li>
+				<li class="my-0 py-0">Plausible</li>
+				<li class="my-0 py-0">Umami</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Data Logging
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Datadog</li>
+				<li class="my-0 py-0">Discord Webhooks</li>
+				<li class="my-0 py-0">Slack Webhooks</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Monetization
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Stripe</li>
+				<li class="my-0 py-0">zink.tips</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Search and Indexing
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">ElasticSearch</li>
+				<li class="my-0 py-0">Algolia</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Artificial Intelligence
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">GPT-3</li>
+				<li class="my-0 py-0">Codex</li>
+				<li class="my-0 py-0">Dall-E 2</li>
+				<li class="my-0 py-0">Stable Diffusion</li>
+			</ul>
+			<h2
+				class="font-display text-foreground-default mt-3 mb-0 text-2xl font-bold"
+			>
+				Physical Products
+			</h2>
+			<ul class="text-foreground-dimmer m-0 py-0">
+				<li class="my-0 py-0">Printful</li>
+			</ul>
+		</div>
+	</main>
+</Layout>

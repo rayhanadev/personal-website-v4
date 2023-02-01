@@ -4,7 +4,7 @@ entrypoint = "index.js"
 hidden = [".config", "*.config.json", "*.config.mjs", "dist"]
 
 [nix]
-channel = "stable-22_05"
+channel = "stable-22_11"
 
 [env]
 XDG_CONFIG_HOME = "/home/runner/.config"
@@ -67,3 +67,7 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
+
+[deployment]
+build = ["sh", "-c", "npm run build"]
+run = ["sh", "-c", "npm run start"]

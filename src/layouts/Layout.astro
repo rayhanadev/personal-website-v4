@@ -1,8 +1,11 @@
 ---
-import '../styles/fonts.scss';
-import AuthStore from '@components/stores/AuthStore';
-import { getUser } from '@libs/useReplAuth';
 import { SEO } from 'astro-seo';
+
+import AuthStore from '@components/stores/AuthStore';
+
+import { getUser } from '@libs/useReplAuth';
+
+import '@styles/fonts.scss';
 
 const user = getUser({ client: Astro });
 
@@ -10,11 +13,12 @@ export interface Props {
 	title: string;
 	ogtitle: string;
 	description: string;
+	expose: boolean;
 }
 
-const { UMAMI_ANALYTICS_KEY } = import.meta.env;
+const UMAMI_ANALYTICS_KEY = import.meta.env.PUBLIC_UMAMI_ANALYTICS_KEY;
 
-const { title, ogtitle, description } = Astro.props;
+const { title, ogtitle, description, expose } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +27,34 @@ const { title, ogtitle, description } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<script type="application/ld+json" set:html={JSON.stringify(			{
+			  "@context": "http://www.schema.org",
+			  "@type": "person",
+			  "name": "Rayhan Noufal Arayilakath",
+				"alternateName": "RayhanADev",
+				"description": "Developer",
+				"disambiguatingDescription": "Fullstack Web Developer",
+			  "jobTitle": "Anti-Abuse Engineer",
+			  "height": "68 inches",
+			  "gender": "male",
+			  "url": "https://www.furret.dev",
+			  "sameAs": [
+			     "https://github.com/rayhanadev",
+			     "https://linkedin.com/in/rayhanadev",
+			     "https://twitter.com/rayhanadev",
+			     "https://replit.com/@RayhanADev",
+			     "https://www.youtube.com/channel/UCk2GEqJXyLaZBPl8ATPLKCQ"
+			  ],
+			  "image": "https://www.furret.dev/rayhanarayilakath.jpeg",
+			  "address": {
+			     "@type": "PostalAddress",
+			     "addressRegion": "Texas",
+			     "addressCountry": "United States of America"
+			  },
+			  "email": "ray@furret.dev",
+			  "birthDate": "2006-06-24"
+			})}></script>
 
 		<link
 			rel="apple-touch-icon"
@@ -45,54 +77,50 @@ const { title, ogtitle, description } = Astro.props;
 
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4f7c8a" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#14131E">
 
 		<meta name="msapplication-TileColor" content="#4f7c8a" />
 		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
 		<meta name="theme-color" content="#f3f3f3" />
 
+		<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+
 		<SEO
-			title={title || import.meta.env.REPL_SLUG}
-			description={description ||
-				"RayhanADev's scaffolding for creating a new Astro.build application!"}
+			title={title}
+			description={description}
+			canonical="https://www.furret.dev"
+			noindex={!expose}
+			nofollow={!expose}
 			openGraph={{
 				basic: {
 					type: 'website',
-					title: ogtitle || 'Astro Furrets Template',
-					image: `${Astro.site}opengraphimage.png`,
+					title: ogtitle,
+					image: `${import.meta.env.SITE}/opengraphimage.png`,
 				},
 				optional: {
-					description:
-						"RayhanADev's scaffolding for creating a new Astro.build application!",
-					determiner: 'the',
+					description: description,
+					locale: "en-US",
+					siteName: "furret.dev",
 				},
 				image: {
-					alt: 'RayhanADev Logo',
-					type: 'image/svg+xml',
+					alt: "Ray's cover image, with the text: Teen Fullstack Web Developer and Software Engineer. Contact me at ray@furret.dev.",
+					type: 'image/png',
 				},
 			}}
 			twitter={{
+				title: title,
+				description: description,
+				image: `${import.meta.env.SITE}/twittercard.png`,
+				imageAlt: "Ray's cover image, with the text: Teen Fullstack Web Developer and Software Engineer. Contact me at ray@furret.dev.",
 				card: 'summary_large_image',
-				site: 'astrodotbuild',
+				site: 'rayhanadev',
 				creator: 'rayhanadev',
 			}}
-			extend={{
-				meta: [
-					{
-						name: 'twitter:image',
-						content: `${Astro.site}twittercard.png`,
-					},
-					{
-						name: 'twitter:title',
-						content: 'Astro Furrets Template',
-					},
-					{
-						name: 'twitter:description',
-						content:
-							"RayhanADev's scaffolding for creating a new Astro.build application!",
-					},
-				],
-			}}
 		/>
+
+		<meta name="author" content="Rayhan Noufal Arayilakath" />
+		<meta name="keywords" content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit" />
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -103,8 +131,7 @@ const { title, ogtitle, description } = Astro.props;
 					async
 					defer
 					data-website-id={UMAMI_ANALYTICS_KEY}
-					type="text/partytown"
-					src="https://umami.furret.codes/umami.js"
+					src="https://umami.furret.dev/umami.js"
 				/>
 			)
 		}
@@ -128,7 +155,7 @@ const { title, ogtitle, description } = Astro.props;
 		</style>
 	</head>
 	<body
-		class="relative min-h-screen min-h-webkitscreen py-16 bg-background-root text-foreground-default text-base font-body"
+		class="bg-background-root text-foreground-default font-body relative flex h-screen max-h-screen h-webkitscreen max-h-webkitscreen flex-col items-center justify-center overflow-y-hidden text-base md:py-8"
 	>
 		<AuthStore client:load user={user} />
 		<slot />

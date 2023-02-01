@@ -1,3 +1,4 @@
+import typographyPlugin from '@tailwindcss/typography';
 import resolveConfig from 'tailwindcss/resolveConfig.js';
 
 export default resolveConfig({
@@ -1036,5 +1037,5 @@ export default resolveConfig({
 		'active',
 		'disabled',
 	],
-	plugins: [],
+	plugins: [typographyPlugin],
 });

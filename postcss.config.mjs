@@ -1,4 +1,3 @@
-import tailwind from './tailwind.config.mjs';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import postcssFontpath from 'postcss-fontpath';
@@ -6,13 +5,14 @@ import postcssImport from 'postcss-import';
 import tailwindcss from 'tailwindcss';
 import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 
+import tailwind from './tailwind.config.mjs';
+
 const config = {
 	plugins: [
 		postcssImport(),
 		postcssFontpath({
 			formats: [
 				{ type: 'woff2', ext: 'woff2' },
-				{ type: 'truetype', ext: 'ttf' },
 			],
 		}),
 		tailwindcssNesting(),
@@ -20,7 +20,7 @@ const config = {
 			config: tailwind,
 		}),
 		autoprefixer(),
-		...(process.env.NODE_ENV === 'production' ? [cssnano()] : []),
+		cssnano(),
 	],
 };
 

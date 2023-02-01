@@ -1,31 +1,116 @@
 ---
-import Login from '../components/Login';
-import Layout from '../layouts/Layout.astro';
-import { getUser } from '../libs/useReplAuth';
-import { Picture } from 'astro-imagetools/components';
+import ArrowRight from '~icons/material-symbols/arrow-right-alt-rounded';
+import Github from '~icons/mdi/github';
+import Linkedin from '~icons/mdi/linkedin';
+import Replit from '~icons/simple-icons/replit';
+import Mail from '~icons/tabler/mail-forward';
+
+import Layout from '@layouts/Layout.astro';
+
+import { getUser } from '@libs/useReplAuth';
 
 const user = getUser({ client: Astro });
+
+if (import.meta.env.PROD && Astro.url.hostname !== 'www.furret.dev') {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
+
+if (
+	import.meta.env.DEV &&
+	user !== null &&
+	user.name !== 'RayhanADev' &&
+	Astro.url.hostname !== 'www.furret.dev'
+) {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
 ---
 
 <Layout
-	title={process.env.REPL_SLUG}
-	ogtitle="Some new project by RayhanADev!"
-	description="Some new project by RayhanADev!"
+	title="Ray Arayilakath | Teen Fullstack Web Developer && Software Engineer."
+	ogtitle="Teen Fullstack Web Developer && Software Engineer. I build anti-abuse tooling for Replit and make kewl things with their APIs."
+	description="A teen Fullstack Web Developer and Software Engineer based in the Dallas Fort-Worth Area in Texas. With over 3 years of experience creating a variety of tools and websites for different organizations, I am a highly capable and talented developer."
+	expose={true}
 >
-	<main class="max-w-sm py-5 px-8 m-auto bg-background-default rounded">
-		<h1 class="font-display font-bold text-5xl mt-8 mb-4">Astro Furrets</h1>
-		<Picture src="/logo.png" alt="RayhanADev's Logo" />
-		<p class="w-full text-foreground-dimmest">
-			A little bit of scaffolding for RayhanADev's kewl projects.
+	<main
+		class="h-webkitscreen bg-background-default my-0 flex h-screen w-full max-w-xs flex-col flex-nowrap items-center justify-start gap-4 rounded py-8 px-8 md:m-auto md:h-80 md:max-h-80 md:max-w-lg md:items-start"
+	>
+		<h1 class="font-display mt-auto w-full text-4xl font-bold md:mt-4">
+			@RayhanADev
+		</h1>
+		<p class="text-foreground-dimmest w-full">
+			Teen Fullstack Web Developer && Software Engineer. I build
+			anti-abuse tooling for <a
+				class="hover:decoration-outline-dimmer hover:text-outline-dimmer underline transition-all duration-200"
+				href="https://replit.com/">Replit</a
+			> and make kewl things with their APIs.
 		</p>
-		{
-			user && user.name ? (
-				<p class="my-2">
-					Signed in as <strong>{user.name}</strong>.
+		<div
+			class="mb-auto flex w-full flex-row flex-nowrap items-center justify-between md:mb-0"
+		>
+			<div class="flex flex-none flex-col flex-nowrap gap-2">
+				<p
+					class="hover:decoration-accentPrimary-default flex w-full flex-row flex-nowrap items-center justify-start gap-1 underline transition-all duration-200"
+				>
+					<ArrowRight />
+					<a href="/skillset" rel="preload">View my skill set</a>
 				</p>
-			) : (
-				<Login client:load />
-			)
-		}
+				<p
+					class="hover:decoration-accentPrimary-default flex w-full flex-row flex-nowrap items-center justify-start gap-1 underline transition-all duration-200"
+				>
+					<ArrowRight />
+					<a href="/guestbook" rel="preload">Sign my guestbook</a>
+				</p>
+				<p
+					class="hover:decoration-accentPrimary-default flex w-full flex-row flex-nowrap items-center justify-start gap-1 underline transition-all duration-200"
+				>
+					<ArrowRight />
+					<a href="/resume.pdf">Read my resume</a>
+				</p>
+			</div>
+			<div class="flex w-24 flex-none flex-row flex-wrap gap-2">
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest flex h-10 w-10 cursor-pointer flex-row items-center justify-center transition-all duration-200"
+				>
+					<span class="hidden">Go to my Github Profile</span>
+						<a href="https://github.com/rayhanadev">
+						<Github
+							style={{ width: '40px', height: '40px' }}
+						/>
+					</a>
+				</span>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest flex h-10 w-10 cursor-pointer flex-row items-center justify-center transition-all duration-200"
+				>
+					<a href="https://linkedin.com/in/rayhanadev">
+						<span class="hidden">Go to my Linkedin Profile</span>
+						<Linkedin
+							style={{ width: '40px', height: '40px' }}
+						/>
+					</a>
+				</span>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest flex h-10 w-10 cursor-pointer flex-row items-center justify-center transition-all duration-200"
+				>
+					<a href="mailto:ray@furret.dev">
+						<span class="hidden">Send me an Email</span>
+						<Mail
+							style={{ width: '40px', height: '40px' }}
+						/>
+					</a>
+				</span>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest flex h-10 w-10 cursor-pointer flex-row items-center justify-center transition-all duration-200"
+				>
+					<a href="https://replit.com/@RayhanADev">
+						<span class="hidden">Go to my Replit Profile</span>
+						<Replit
+							style={{ width: '32px', height: '32px' }}
+						/>
+					</a>
+				</span>
+			</div>
+		</div>
 	</main>
 </Layout>

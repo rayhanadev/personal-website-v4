@@ -4,8 +4,9 @@
 	"tabWidth": 4,
 	"singleQuote": true,
 	"bracketSpacing": true,
-	"astroAllowShorthand": false
-  "importOrder": [
+	"astroAllowShorthand": false,
+	"importOrder": [
+		"^node:(.*)$",
 		"^@layouts/(.*)$",
 		"^@components/(.*)$",
 		"^@stores/(.*)$",
@@ -14,6 +15,6 @@
 		"^@/(.*)$",
 		"^[./]"
 	],
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
 }

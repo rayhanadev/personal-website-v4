@@ -1,7 +1,8 @@
-import { authUser } from '@libs/useReplAuth';
 import React from 'react';
 
-const Login = () => {
+import { authUser } from '@libs/useReplAuth';
+
+const Login: React.FC = () => {
 	return (
 		<button
 			className="bg-background-dimmer border border-outline-dimmest outline-none active:bg-background-dimmest active:border-outline-default focus:bg-background-dimmest focus:border-outline-default px-4 py-2 my-2 rounded-lg cursor-pointer"

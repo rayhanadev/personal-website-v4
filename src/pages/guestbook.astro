@@ -1,0 +1,70 @@
+---
+import Emoji from 'astro-emoji';
+import Home from '~icons/material-symbols/home-rounded';
+
+import Layout from '@layouts/Layout.astro';
+
+import Guestbook from '@components/Guestbook';
+import Login from '@components/Login';
+import Message from '@components/Message';
+import Wave from '@components/Wave';
+
+import { getUser } from '@libs/useReplAuth';
+
+const user = getUser({ client: Astro });
+
+if (import.meta.env.PROD && Astro.url.hostname !== 'www.furret.dev') {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
+
+if (
+	import.meta.env.DEV &&
+	user !== null &&
+	user.name !== 'RayhanADev' &&
+	Astro.url.hostname !== 'www.furret.dev'
+) {
+	Astro.response.status = 302;
+	Astro.response.headers.set('Location', 'https://www.furret.dev/');
+}
+---
+
+<Layout
+	title="Guestbook | Ray Arayilakath | Teen Fullstack Web Developer && Software Engineer."
+	ogtitle="Teen Fullstack Web Developer && Software Engineer. I build anti-abuse tooling for Replit and make kewl things with their APIs."
+	description="A teen Fullstack Web Developer and Software Engineer based in the Dallas Fort-Worth Area in Texas. With over 3 years of experience creating a variety of tools and websites for different organizations, I am a highly capable and talented developer."
+	expose={false}
+>
+	<main
+		class="bg-background-default m-auto flex h-72 max-h-72 w-full max-w-sm flex-col flex-nowrap items-start justify-start gap-4 overflow-y-auto rounded px-8 pb-8 md:h-screen md:max-h-screen md:max-w-lg"
+	>
+		<div class="bg-background-default sticky top-0 w-full pt-8 pb-2">
+			<nav
+				class="mt-4 flex w-full flex-row flex-nowrap items-center justify-between"
+			>
+				<h1 class="font-display text-4xl font-bold">Guestbook</h1>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest my-auto h-10 w-10 cursor-pointer transition-all duration-200"
+				>
+					<a href="/" rel="preload"
+						><Home style={{ width: '40px', height: '40px' }} /></a
+					>
+				</span>
+			</nav>
+			<p class="text-foreground-dimmest w-full">
+				Drop by and say hello! <Emoji symbol="👋" label="wave" />
+			</p>
+			{
+				user && user.name ? (
+					<div class="flex w-full w-full flex-row flex-nowrap items-center justify-between gap-4">
+						<Wave client:load />
+						<Message client:load />
+					</div>
+				) : (
+					<Login client:load />
+				)
+			}
+		</div>
+		<Guestbook client:load />
+	</main>
+</Layout>

@@ -1,4 +1,5 @@
 import { middleware } from 'astro-imagetools/ssr';
+
 import stream from 'node:stream';
 
 export const handler = async (req, res, next) => {
